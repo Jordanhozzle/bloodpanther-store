@@ -4,96 +4,247 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLOOD PANTHER | Tienda Oficial</title>
+
+    <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
     <style>
-        body { background-color: #000; color: white; font-family: 'Arial', sans-serif; margin: 0; padding: 0; }
+        /* --- VARIABLES GLOBALES --- */
+        :root {
+            --color-rojo: #ff0000;
+            --color-negro: #050505;
+            --color-gris: #1a1a1a;
+            --fuente-titulos: 'Orbitron', sans-serif;
+            --fuente-texto: 'Montserrat', sans-serif;
+        }
+
+        /* --- ANIMACIÓN DE FONDO (MÁS LENTA) --- */
+        @keyframes fondoAnimado {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body { 
+            background: linear-gradient(-45deg, #000000, #2b0000, #141414, #000000);
+            background-size: 400% 400%;
+            /* Cambio: 25s para que sea muy lenta y elegante */
+            animation: fondoAnimado 25s ease infinite; 
+            color: white; 
+            font-family: var(--fuente-texto); 
+            margin: 0; 
+            padding: 0; 
+        }
         
-        /* Contenedor del Logo + Texto */
+        /* --- HEADER & NAVBAR --- */
         .header-container { 
             display: flex; 
+            justify-content: space-between; 
             align-items: center; 
-            padding: 20px 5%; 
-            border-bottom: 2px solid #ff0000;
-            background-color: #0a0a0a;
+            padding: 10px 5%; /* Un poco menos de padding vertical porque el logo es grande */
+            border-bottom: 2px solid var(--color-rojo);
+            background-color: rgba(0, 0, 0, 0.95); 
+            position: sticky; 
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.2);
+        }
+
+        /* Área del Logo */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            text-decoration: none; 
         }
 
         .logo-img { 
-            height: 70px; 
+            /* Cambio: Logo más grande (80px) */
+            height: 80px; 
             width: auto; 
-            border-radius: 8px;
-            margin-right: 20px; /* Espacio entre imagen y letras */
+            margin-right: 15px;
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.6));
+            transition: transform 0.3s;
+        }
+        
+        .logo-area:hover .logo-img {
+            transform: scale(1.05); /* Pequeño zoom al pasar el mouse por el logo */
         }
 
         .brand-name { 
-            color: #ff0000; 
-            font-size: 2.2rem; 
+            color: var(--color-rojo); 
+            font-size: 1.8rem; 
             font-weight: 900; 
-            letter-spacing: 5px; 
+            /* Cambio: Letras comprimidas */
+            letter-spacing: -1px; 
             text-transform: uppercase;
-            font-family: 'Arial Black', Gadget, sans-serif;
+            font-family: var(--fuente-titulos);
+            text-shadow: 2px 2px 0px #111;
         }
 
+        /* Área del Menú */
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: var(--fuente-titulos);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-rojo);
+            text-shadow: 0 0 8px var(--color-rojo);
+        }
+
+        /* --- GRID DE PRODUCTOS --- */
         .grid-productos { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; 
-            padding: 50px 5%; 
+            gap: 40px; 
+            padding: 60px 5%; 
         }
 
+        /* --- TARJETA --- */
         .tarjeta { 
-            background: #111; 
+            background: var(--color-gris); 
             border: 1px solid #333; 
             border-radius: 15px; 
-            padding: 15px; 
+            padding: 20px; 
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+            border-color: var(--color-rojo);
         }
 
         .img-prenda { 
             width: 100%; 
-            height: 300px; 
+            height: 320px; 
             object-fit: cover; 
             border-radius: 10px; 
-            background-color: #222;
+            margin-bottom: 15px;
+            filter: grayscale(30%);
+            transition: filter 0.3s;
         }
 
-        .precio { color: #ff0000; font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
+        .tarjeta:hover .img-prenda {
+            filter: grayscale(0%);
+        }
+
+        h3 {
+            font-family: var(--fuente-titulos);
+            font-size: 1.2rem;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .precio { 
+            color: var(--color-rojo); 
+            font-size: 1.6rem; 
+            font-weight: bold; 
+            margin: 15px 0; 
+            font-family: var(--fuente-titulos);
+        }
         
+        /* --- BOTONES --- */
+        .btn-link { text-decoration: none; display: block; }
+
         button { 
-            background: #ff0000; 
+            background: transparent; 
             color: white; 
-            border: none; 
+            border: 2px solid var(--color-rojo); 
             padding: 12px; 
             width: 100%; 
             font-weight: bold; 
+            font-family: var(--fuente-texto);
             border-radius: 5px; 
             cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--color-rojo);
+            color: white;
+            box-shadow: 0 0 15px var(--color-rojo);
+        }
+
+        /* --- RESPONSIVE (CELULARES) --- */
+        @media (max-width: 768px) {
+            .header-container { 
+                flex-direction: column; 
+                gap: 20px;
+                padding: 15px;
+            }
+            .brand-name { font-size: 1.5rem; }
+            .nav-menu { gap: 20px; font-size: 0.8rem; }
+            /* Ajuste del logo en celular para que no ocupe toda la pantalla */
+            .logo-img { height: 60px; margin-right: 10px; } 
         }
     </style>
 </head>
 <body>
 
-    <div class="header-container">
-        <img src="https://github.com/Jordanhozzle/bloodpanther-store/blob/main/logo.jpg?raw=true" alt="Logo" class="logo-img">
+    <header class="header-container">
         
-        <div class="brand-name">BLOOD PANTHER</div>
-    </div>
+        <a href="index.html" class="logo-area" style="text-decoration: none;">
+            <img src="img/logo.png" alt="Blood Panther Logo" class="logo-img">
+            <div class="brand-name">BLOOD PANTHER</div>
+        </a>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">INICIO</a></li>
+                
+                <li><a href="productos.html" class="nav-link">CATÁLOGO</a></li>
+                
+                <li>
+                    <a href="https://wa.me/51999999999?text=Necesito%20ayuda%20con%20un%20pedido" target="_blank" class="nav-link">
+                        AYUDA
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="grid-productos">
+        
         <div class="tarjeta">
-            <img src="foto1.jpg" alt="Producto 1" class="img-prenda">
+            <img src="foto1.jpg" alt="Bonsai Acid Grey" class="img-prenda">
             <h3>BONSAI OVERSIZED ACID GREY</h3>
             <p class="precio">$55.00 SOLES</p>
-            <button>COMPRAR POR WHATSAPP</button>
+            
+            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20comprar%20el%20Bonsai%20Acid%20Grey" target="_blank" class="btn-link">
+                <button>COMPRAR AHORA</button>
+            </a>
         </div>
 
         <div class="tarjeta">
-            <img src="foto2.jpg" alt="Producto 2" class="img-prenda">
-            <h3>BONSAI OVERSIZED</h3>
+            <img src="foto2.jpg" alt="Bonsai Oversized" class="img-prenda">
+            <h3>BONSAI OVERSIZED BLACK</h3>
             <p class="precio">$55.00 SOLES</p>
-            <button>COMPRAR POR WHATSAPP</button>
+            
+            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20comprar%20el%20Bonsai%20Black" target="_blank" class="btn-link">
+                <button>COMPRAR AHORA</button>
+            </a>
         </div>
+
     </div>
 
 </body>
 </html>
-
-
