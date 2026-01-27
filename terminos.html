@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Oficial | BLOOD PANTHER</title>
+    <title>Términos y Condiciones | BLOOD PANTHER</title>
     
     <link rel="icon" type="image/jpg" href="img/logo.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- VARIABLES (Sincronizadas con Index) --- */
         :root {
             --rojo: #ff0000;
             --negro: #050505;
@@ -25,135 +22,144 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body { 
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+        body {
             background-color: var(--negro);
-            font-family: var(--font-body);
             color: var(--texto);
-            overflow: hidden;
+            font-family: var(--font-body);
+            line-height: 1.6;
         }
 
-        /* --- FONDO ATMOSFÉRICO --- */
-        .bg-fixed {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1a0000 0%, #000000 80%);
-            animation: pulseBg 10s ease infinite;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        @keyframes pulseBg {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        /* HEADER SIMPLE */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 30px;
         }
 
-        /* --- TARJETA CENTRAL --- */
-        .access-card {
-            background: rgba(15, 15, 15, 0.95);
-            border: 1px solid #333;
-            padding: 50px 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.1);
-            max-width: 90%;
-            width: 450px;
-            position: relative;
-            backdrop-filter: blur(10px);
-            border-top: 3px solid var(--rojo);
-        }
-
-        .logo-img {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 25px;
-            border-radius: 50%;
-            border: 2px solid var(--rojo);
-            padding: 3px;
-        }
+        .logo-img { width: 70px; height: auto; border-radius: 50%; border: 2px solid var(--rojo); padding: 2px; margin-bottom: 20px;}
 
         h1 {
             font-family: var(--font-display);
-            font-size: 1.8rem;
-            color: white;
-            margin: 0 0 15px 0;
+            font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: white;
         }
-        
         h1 span { color: var(--rojo); }
 
-        p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            color: #aaa;
+        /* DISEÑO DIVIDIDO EN 2 COLUMNAS */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
         }
 
-        /* --- BOTÓN WHATSAPP --- */
-        .btn-ws {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--rojo);
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 5px;
-            font-weight: 700;
+        .policy-col {
+            background: rgba(20, 20, 20, 0.5);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 3px solid var(--rojo); /* Línea roja a la izquierda */
+        }
+
+        h2 {
             font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
         }
 
-        .btn-ws:hover {
-            background-color: white;
-            color: var(--negro);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
-            transform: translateY(-3px);
+        ul { list-style: none; padding: 0; }
+        
+        li {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #ccc;
+            padding-left: 20px;
+            position: relative;
         }
 
-        /* --- ENLACE VOLVER --- */
-        .volver {
-            display: inline-block;
-            margin-top: 30px;
+        /* Viñeta personalizada */
+        li::before {
+            content: '•';
+            color: var(--rojo);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* FOOTER SIMPLE */
+        .simple-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+        }
+
+        .btn-back {
             color: #666;
             text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            transition: 0.3s;
             text-transform: uppercase;
-            font-weight: 600;
         }
+        .btn-back:hover { color: var(--rojo); }
 
-        .volver:hover { color: white; }
-
+        /* MÓVIL */
+        @media (max-width: 768px) {
+            .split-layout { grid-template-columns: 1fr; gap: 30px; }
+            h1 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-fixed"></div>
+    <div class="container">
+        
+        <div class="page-header">
+            <a href="index.html"><img src="img/logo.jpg" alt="Blood Panther" class="logo-img"></a>
+            <h1>Términos y <span>Condiciones</span></h1>
+        </div>
 
-    <div class="access-card">
-        <img src="img/logo.jpg" alt="Blood Panther" class="logo-img">
-        
-        <h1>Acceso al <br><span>Catálogo</span></h1>
-        
-        <p>Nuestro stock se mueve rápido. <br>Solicita el catálogo PDF actualizado con precios y tallas disponibles directamente a nuestro equipo.</p>
-        
-        <a href="https://wa.me/51992287568?text=Hola,%20quisiera%20que%20me%20envien%20el%20catalogo%20PDF%20actualizado" target="_blank" class="btn-ws">
-            <i class="fab fa-whatsapp"></i> Solicitar PDF
-        </a>
+        <div class="split-layout">
+            
+            <div class="policy-col">
+                <h2>01. Políticas de Compra</h2>
+                <ul>
+                    <li><strong>Métodos de Pago:</strong> Aceptamos transferencias BCP, Interbank, Yape y Plin. Los pedidos solo se procesan una vez confirmado el pago.</li>
+                    <li><strong>Reservas:</strong> Las prendas se reservan únicamente por 2 horas después de enviar los datos de pago. Si no se envía la constancia, el stock se libera.</li>
+                    <li><strong>Stock Limitado:</strong> Trabajamos con drops limitados. Una vez que un producto es "Sold Out", no aseguramos restock inmediato.</li>
+                    <li><strong>Precios:</strong> Todos los precios están expresados en Soles (PEN) y no incluyen el costo de envío.</li>
+                </ul>
+            </div>
 
-        <br>
-        <a href="index.html" class="volver">← Volver a la Tienda</a>
+            <div class="policy-col">
+                <h2>02. Envíos y Cambios</h2>
+                <ul>
+                    <li><strong>Envíos Lima:</strong> Realizamos envíos mediante motorizado (24-48hrs) o Olva Courier.</li>
+                    <li><strong>Envíos Provincia:</strong> Envíos a todo el Perú vía Shalom o Olva Courier (2 a 4 días hábiles).</li>
+                    <li><strong>No Devoluciones:</strong> No realizamos devoluciones de dinero. Por favor verifica bien tu pedido antes de pagar.</li>
+                    <li><strong>Cambios de Talla:</strong> Se aceptan cambios de talla dentro de los primeros 3 días de recibido, siempre que la prenda esté intacta, sin usar y con sus etiquetas. El cliente asume los costos de envío.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="simple-footer">
+            <a href="index.html" class="btn-back">← Volver al Inicio</a>
+        </div>
+
     </div>
 
 </body>
