@@ -3,103 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Panther | Minimalist Store</title>
+    <title>Blood Panther | Official Store</title>
     <style>
-        /* Estilo General Dark */
         body { background-color: #0a0a0a; color: white; font-family: 'Helvetica', sans-serif; margin: 0; }
         
-        /* Navegación elegante */
-        nav { display: flex; justify-content: space-between; padding: 30px 50px; align-items: center; border-bottom: 1px solid #1a1a1a; }
-        .logo { color: #ff0000; font-weight: bold; font-size: 1.8rem; letter-spacing: 5px; }
+        nav { display: flex; justify-content: space-between; padding: 20px 5%; align-items: center; border-bottom: 1px solid #1a1a1a; }
         
-        /* Contenedor de prendas (Cuadros lindos) */
+        /* Estilo para tu Logo */
+        .logo-img { height: 60px; width: auto; }
+        .logo-texto { color: #ff0000; font-weight: bold; font-size: 1.5rem; letter-spacing: 3px; text-decoration: none; }
+
         .grid-productos { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 40px; 
-            padding: 60px 10%; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; 
+            padding: 40px 5%; 
         }
 
         .tarjeta { 
             background: #111; 
             border: 1px solid #222; 
-            border-radius: 20px; 
-            padding: 25px; 
+            border-radius: 15px; 
+            padding: 20px; 
             text-align: center; 
-            transition: all 0.4s ease; 
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
         }
 
-        /* Efecto al pasar el ratón (Glow Rojo) */
-        .tarjeta:hover { 
-            border-color: #ff0000; 
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
-            transform: translateY(-10px);
-        }
+        .tarjeta:hover { border-color: #ff0000; transform: translateY(-5px); }
 
-        .img-placeholder { 
+        .img-prenda { 
             width: 100%; 
             height: 250px; 
-            background: #1a1a1a; 
-            border-radius: 15px; 
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover; 
+            border-radius: 10px; 
+            background: #1a1a1a;
         }
 
-        h3 { font-size: 1.2rem; margin: 15px 0 5px; letter-spacing: 1px; }
-        .precio { color: #ff0000; font-weight: bold; font-size: 1.4rem; margin-bottom: 20px; }
+        h3 { font-size: 1.1rem; margin: 15px 0 5px; text-transform: uppercase; }
+        .precio { color: #ff0000; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
         
-        /* Botón minimalista */
         button { 
             background: transparent; 
             color: white; 
             border: 1px solid #ff0000; 
-            padding: 12px 30px; 
-            border-radius: 50px; 
+            padding: 10px 25px; 
+            border-radius: 5px; 
             cursor: pointer; 
             font-weight: bold;
-            transition: 0.3s;
+            width: 100%;
         }
 
-        button:hover { background: #ff0000; box-shadow: 0 0 15px #ff0000; }
+        button:hover { background: #ff0000; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">BLOOD PANTHER</div>
-        <div style="font-size: 0.9rem; letter-spacing: 2px;">
-            <a href="#" style="color:white; text-decoration:none; margin-left:20px;">HOME</a>
-            <a href="#" style="color:white; text-decoration:none; margin-left:20px;">SHOP</a>
-        </div>
+        <a href="/" class="logo-texto">
+            <img src="https://github.com/Jordanhozzle/bloodpanther-store/blob/main/logo.jpg?raw=true" alt="Blood Panther" class="logo-img">
+        </a>
+        <div style="letter-spacing: 2px; font-size: 0.8rem;">SHOP ALL</div>
     </nav>
 
     <div class="grid-productos">
         <div class="tarjeta">
-            <div class="img-placeholder">
-                <span style="color: #333; font-size: 0.8rem;"<img src="logo.png" alt="Blood Panther Logo" style="width: 150px; height: auto;">    
-                </span>
-            </div>
-            <h3>BONSAI OVERSIZED</h3>
+            <img src="foto1.jpg" alt="Prenda 1" class="img-prenda">
+            <h3>HOODIE SIGNATURE</h3>
             <p class="precio">$55.00</p>
-            <button>ADD TO CART</button>
+            <button>COMPRAR</button>
         </div>
 
         <div class="tarjeta">
-            <div class="img-placeholder">
-                <span style="color: #333; font-size: 0.8rem;">[ LOGO PANTERA ]</span>
-            </div>
-            <h3>OVERSIZED ACID GREY</h3>
-            <p class="precio">$55.00</p>
-            <button>ADD TO CART</button>
+            <img src="foto2.jpg" alt="Prenda 2" class="img-prenda">
+            <h3>OVERSIZED TEE</h3>
+            <p class="precio">$35.00</p>
+            <button>COMPRAR</button>
+        </div>
+
+        <div class="tarjeta">
+            <img src="foto3.jpg" alt="Prenda 3" class="img-prenda">
+            <h3>PANTHER CAP</h3>
+            <p class="precio">$25.00</p>
+            <button>COMPRAR</button>
+        </div>
+
+        <div class="tarjeta">
+            <img src="foto4.jpg" alt="Prenda 4" class="img-prenda">
+            <h3>CARGO PANTS</h3>
+            <p class="precio">$65.00</p>
+            <button>COMPRAR</button>
         </div>
     </div>
 
 </body>
-
 </html>
 
 
