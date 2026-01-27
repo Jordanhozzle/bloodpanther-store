@@ -3,143 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo | BLOOD PANTHER</title>
+    <title>Catálogo Oficial | BLOOD PANTHER</title>
     
     <link rel="icon" type="image/jpg" href="img/logo.jpg">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- VARIABLES (Sincronizadas con Index) --- */
-        :root {
-            --rojo: #ff0000;
-            --negro: #050505;
-            --texto: #e0e0e0;
-            --font-display: 'Orbitron', sans-serif;
-            --font-body: 'Montserrat', sans-serif;
-        }
-
+        :root { --rojo: #ff0000; --negro: #050505; --texto: #e0e0e0; --font-display: 'Orbitron', sans-serif; --font-body: 'Montserrat', sans-serif; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
+        
         body { 
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-color: var(--negro);
-            font-family: var(--font-body);
-            color: var(--texto);
-            overflow: hidden;
+            height: 100vh; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+            background-color: var(--negro); font-family: var(--font-body); color: var(--texto); overflow: hidden; 
         }
 
-        /* --- FONDO ATMOSFÉRICO --- */
-        .bg-fixed {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1a0000 0%, #000000 80%);
-            animation: pulseBg 10s ease infinite;
+        /* --- ANIMACIÓN DARK DRIFT (Igual que el Index) --- */
+        .bg-animado {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: linear-gradient(125deg, #000000 0%, #1a0000 30%, #050505 50%, #220000 70%, #000000 100%);
+            background-size: 300% 300%; animation: darkDrift 30s ease infinite;
+        }
+        @keyframes darkDrift { 
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; } 
         }
 
-        @keyframes pulseBg {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        /* --- TARJETA CENTRAL --- */
-        .access-card {
-            background: rgba(15, 15, 15, 0.95);
-            border: 1px solid #333;
-            padding: 50px 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.1);
-            max-width: 90%;
-            width: 450px;
-            position: relative;
-            backdrop-filter: blur(10px);
-            border-top: 3px solid var(--rojo);
-        }
-
-        .logo-img {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 25px;
-            border-radius: 50%;
-            border: 2px solid var(--rojo);
-            padding: 3px;
-        }
-
-        h1 {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            color: white;
-            margin: 0 0 15px 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        /* Tarjeta Glassmorphism */
+        .access-card { 
+            background: rgba(20, 20, 20, 0.6); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 50px 30px; border-radius: 10px; 
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+            max-width: 90%; width: 450px; position: relative; 
+            border-top: 3px solid var(--rojo); 
         }
         
+        .logo-img { width: 90px; height: 90px; margin-bottom: 25px; border-radius: 50%; border: 2px solid var(--rojo); padding: 3px; }
+        h1 { font-family: var(--font-display); font-size: 1.8rem; color: white; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 2px; }
         h1 span { color: var(--rojo); }
-
-        p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            color: #aaa;
-        }
-
-        /* --- BOTÓN WHATSAPP --- */
-        .btn-ws {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--rojo);
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 5px;
-            font-weight: 700;
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-        }
-
-        .btn-ws:hover {
-            background-color: white;
-            color: var(--negro);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
-            transform: translateY(-3px);
-        }
-
-        /* --- ENLACE VOLVER --- */
-        .volver {
-            display: inline-block;
-            margin-top: 30px;
-            color: #666;
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
+        p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 35px; color: #aaa; }
+        
+        .btn-ws { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--rojo); color: white; text-decoration: none; padding: 15px; border-radius: 5px; font-weight: 700; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); }
+        .btn-ws:hover { background-color: white; color: var(--negro); box-shadow: 0 0 30px rgba(255, 0, 0, 0.6); transform: translateY(-3px); }
+        
+        .volver { display: inline-block; margin-top: 30px; color: #888; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; transition: color 0.3s; text-transform: uppercase; font-weight: 600; }
         .volver:hover { color: white; }
-
     </style>
 </head>
 <body>
 
-    <div class="bg-fixed"></div>
+    <div class="bg-animado"></div>
 
     <div class="access-card">
         <img src="img/logo.jpg" alt="Blood Panther" class="logo-img">
