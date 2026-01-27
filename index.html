@@ -3,111 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Panther | Official Store</title>
+    <title>BLOOD PANTHER | Tienda Oficial</title>
     <style>
-        body { background-color: #0a0a0a; color: white; font-family: 'Helvetica', sans-serif; margin: 0; }
+        body { background-color: #000; color: white; font-family: 'Arial', sans-serif; margin: 0; padding: 0; }
         
-        <nav>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="https://github.com/Jordanhozzle/bloodpanther-store/blob/main/logo.jpg?raw=true" alt="Blood Panther" style="height: 60px; width: auto; border-radius: 5px;">
-            
-            <span style="color: #ff0000; font-weight: bold; font-size: 1.8rem; letter-spacing: 4px; font-family: 'Arial Black', sans-serif;">
-                BLOOD PANTHER
-            </span>
-        </div>
-        
-        <div style="letter-spacing: 2px; font-size: 0.8rem; color: #555;">SHOP ALL</div>
-    </nav>
-        
-        /* Estilo para tu Logo */
-        .logo-img { height: 60px; width: auto; }
-        .logo-texto { color: #ff0000; font-weight: bold; font-size: 1.5rem; letter-spacing: 3px; text-decoration: none; }
+        /* Contenedor del Logo + Texto */
+        .header-container { 
+            display: flex; 
+            align-items: center; 
+            padding: 20px 5%; 
+            border-bottom: 2px solid #ff0000;
+            background-color: #0a0a0a;
+        }
+
+        .logo-img { 
+            height: 70px; 
+            width: auto; 
+            border-radius: 8px;
+            margin-right: 20px; /* Espacio entre imagen y letras */
+        }
+
+        .brand-name { 
+            color: #ff0000; 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            text-transform: uppercase;
+            font-family: 'Arial Black', Gadget, sans-serif;
+        }
 
         .grid-productos { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px; 
-            padding: 40px 5%; 
+            padding: 50px 5%; 
         }
 
         .tarjeta { 
             background: #111; 
-            border: 1px solid #222; 
+            border: 1px solid #333; 
             border-radius: 15px; 
-            padding: 20px; 
-            text-align: center; 
-            transition: 0.3s;
+            padding: 15px; 
+            text-align: center;
         }
-
-        .tarjeta:hover { border-color: #ff0000; transform: translateY(-5px); }
 
         .img-prenda { 
             width: 100%; 
-            height: 250px; 
+            height: 300px; 
             object-fit: cover; 
             border-radius: 10px; 
-            background: #1a1a1a;
+            background-color: #222;
         }
 
-        h3 { font-size: 1.1rem; margin: 15px 0 5px; text-transform: uppercase; }
-        .precio { color: #ff0000; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
+        .precio { color: #ff0000; font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
         
         button { 
-            background: transparent; 
+            background: #ff0000; 
             color: white; 
-            border: 1px solid #ff0000; 
-            padding: 10px 25px; 
+            border: none; 
+            padding: 12px; 
+            width: 100%; 
+            font-weight: bold; 
             border-radius: 5px; 
-            cursor: pointer; 
-            font-weight: bold;
-            width: 100%;
+            cursor: pointer;
         }
-
-        button:hover { background: #ff0000; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="/" class="logo-texto">
-            <img src="https://github.com/Jordanhozzle/bloodpanther-store/blob/main/logo.jpg?raw=true" alt="Blood Panther" class="logo-img">
-        </a>
-        <div style="letter-spacing: 2px; font-size: 0.8rem;">SHOP ALL</div>
-    </nav>
+    <div class="header-container">
+        <img src="https://github.com/Jordanhozzle/bloodpanther-store/blob/main/logo.jpg?raw=true" alt="Logo" class="logo-img">
+        
+        <div class="brand-name">BLOOD PANTHER</div>
+    </div>
 
     <div class="grid-productos">
         <div class="tarjeta">
-            <img src="foto1.jpg" alt="Prenda 1" class="img-prenda">
-            <h3>HOODIE SIGNATURE</h3>
-            <p class="precio">$55.00</p>
-            <button>COMPRAR</button>
+            <img src="foto1.jpg" alt="Producto 1" class="img-prenda">
+            <h3>ARTÍCULO 1</h3>
+            <p class="precio">$XX.XX</p>
+            <button>COMPRAR POR WHATSAPP</button>
         </div>
 
         <div class="tarjeta">
-            <img src="foto2.jpg" alt="Prenda 2" class="img-prenda">
-            <h3>OVERSIZED TEE</h3>
-            <p class="precio">$35.00</p>
-            <button>COMPRAR</button>
-        </div>
-
-        <div class="tarjeta">
-            <img src="foto3.jpg" alt="Prenda 3" class="img-prenda">
-            <h3>PANTHER CAP</h3>
-            <p class="precio">$25.00</p>
-            <button>COMPRAR</button>
-        </div>
-
-        <div class="tarjeta">
-            <img src="foto4.jpg" alt="Prenda 4" class="img-prenda">
-            <h3>CARGO PANTS</h3>
-            <p class="precio">$65.00</p>
-            <button>COMPRAR</button>
+            <img src="foto2.jpg" alt="Producto 2" class="img-prenda">
+            <h3>ARTÍCULO 2</h3>
+            <p class="precio">$XX.XX</p>
+            <button>COMPRAR POR WHATSAPP</button>
         </div>
     </div>
 
 </body>
 </html>
-
-
-
-
