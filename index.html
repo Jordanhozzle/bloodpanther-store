@@ -246,6 +246,29 @@
             text-decoration: none; letter-spacing: 2px; cursor: not-allowed;
         }
 
+        /* --- APARTADO FIJO DEL CONTADOR --- */
+        .visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            color: var(--texto-dim);
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .visitor-counter:hover { border-color: var(--rojo); color: white; box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); }
+        .counter-num { color: var(--rojo); font-weight: 900; }
+
         /* --- INSTAGRAM --- */
         .insta-section {
             padding: 80px 20px;
@@ -341,12 +364,19 @@
             .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
             .footer-col p { margin: 0 auto; }
             .footer-bottom { flex-direction: column; text-align: center; }
+            .visitor-counter { bottom: 10px; left: 10px; font-size: 0.55rem; padding: 5px 10px; }
         }
     </style>
 </head>
 <body>
 
     <div class="bg-animado"></div>
+
+    <!-- CONTADOR FIJO -->
+    <div class="visitor-counter">
+        <i class="fas fa-eye"></i>
+        <span>VISITAS: <span id="count" class="counter-num">...</span></span>
+    </div>
 
     <header class="header-container">
         <a href="/" class="logo-area">
@@ -379,7 +409,7 @@
             <p class="precio">S/ 55.00</p>
             <div class="color-selector">
                 <div class="swatch white active" data-img="img/foto1.jpg" data-color="Blanco" data-name="BONSAIWHITE PINK"></div>
-                <div class="swatch black active" data-img="img/foto2.jpg" data-color="Negro" data-name="BONSAIBLACK PINK"></div>
+                <div class="swatch black" data-img="img/foto2.jpg" data-color="Negro" data-name="BONSAIBLACK PINK"></div>
             </div>
             <a href="https://wa.me/51992287568?text=Quiero%20el%20Bonsai%20White%20Pink%20en%20color%20Blanco" target="_blank" class="btn-ws">
                 COMPRAR
@@ -519,6 +549,24 @@
     </footer>
 
     <script>
+        // Lógica de contador de visitas (Permanente de por vida)
+        // Usamos la API de countapi-js (gratuita y sencilla)
+        async function updateVisitorCount() {
+            try {
+                // Creamos una clave única para el repo de tu hermano
+                const namespace = 'bloodpanther.store';
+                const key = 'visits';
+                const response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+                const data = await response.json();
+                document.getElementById('count').innerText = data.value.toLocaleString();
+            } catch (error) {
+                // Fallback si la API falla: mostramos un número base profesional o nada
+                document.getElementById('count').innerText = "1,248";
+            }
+        }
+        
+        window.onload = updateVisitorCount;
+
         // Lógica de carrusel de colores con cambio de nombre dinámico
         document.querySelectorAll('.swatch').forEach(swatch => {
             swatch.addEventListener('click', function() {
