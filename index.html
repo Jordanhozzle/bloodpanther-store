@@ -33,12 +33,11 @@
             overflow-x: hidden;
         }
 
-        /* --- NUEVA ANIMACIÓN "DARK DRIFT" (VIVO Y ACOPLADO) --- */
+        /* --- ANIMACIÓN "DARK DRIFT" --- */
         .bg-animado {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            /* Degradado diagonal complejo para dar sensación de movimiento orgánico */
             background: linear-gradient(125deg, #000000 0%, #1a0000 30%, #050505 50%, #220000 70%, #000000 100%);
             background-size: 300% 300%;
             animation: darkDrift 25s ease infinite;
@@ -56,7 +55,7 @@
             justify-content: space-between; 
             align-items: center; 
             padding: 15px 5%; 
-            background: rgba(5, 5, 5, 0.85); /* Un poco más transparente */
+            background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(15px);
             position: sticky; 
             top: 0; 
@@ -64,7 +63,6 @@
             border-bottom: 1px solid rgba(255, 0, 0, 0.1);
         }
 
-        /* Efecto Láser Rojo */
         .header-container::after {
             content: '';
             position: absolute;
@@ -143,14 +141,11 @@
             margin: 0 auto;
         }
 
-        /* ESTILO DE TARJETA "GLASS" (ACOPLADA AL FONDO) */
         .tarjeta { 
-            /* Esto es lo que las hace ver acopladas: Translucidez + Blur */
             background: rgba(20, 20, 20, 0.45); 
             backdrop-filter: blur(10px); 
             -webkit-backdrop-filter: blur(10px);
-            
-            border: 1px solid rgba(255, 255, 255, 0.08); /* Borde muy sutil */
+            border: 1px solid rgba(255, 255, 255, 0.08); 
             border-radius: 6px; 
             padding: 20px; 
             text-align: center;
@@ -161,9 +156,9 @@
 
         .tarjeta:hover {
             transform: translateY(-8px);
-            background: rgba(30, 30, 30, 0.6); /* Se aclara un poco al pasar el mouse */
-            border-color: rgba(255, 0, 0, 0.5); /* Borde rojo sutil */
-            box-shadow: 0 0 40px rgba(255, 0, 0, 0.15); /* Resplandor rojo ambiental */
+            background: rgba(30, 30, 30, 0.6); 
+            border-color: rgba(255, 0, 0, 0.5); 
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.15); 
         }
 
         .etiqueta {
@@ -186,7 +181,7 @@
         .img-container {
             width: 100%;
             height: 350px;
-            background: rgba(0,0,0,0.3); /* Fondo oscuro suave detrás de la foto */
+            background: rgba(0,0,0,0.3); 
             margin-bottom: 20px;
             overflow: hidden;
             display: flex;
@@ -197,13 +192,41 @@
 
         .img-prenda { 
             width: 100%; height: 100%; object-fit: cover; 
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s;
-            filter: grayscale(20%) contrast(1.1); /* Menos gris, más contraste */
+            transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: grayscale(20%) contrast(1.1);
         }
-        .tarjeta:hover .img-prenda { transform: scale(1.05); filter: grayscale(0%) contrast(1); }
+        .tarjeta:hover .img-prenda { transform: scale(1.05); }
+
+        /* --- SELECTOR DE COLORES (ESTILO CARRUSEL) --- */
+        .color-selector {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .swatch {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #333;
+            transition: 0.3s;
+        }
+        .swatch:hover { transform: scale(1.2); }
+        .swatch.active { border-color: var(--rojo); box-shadow: 0 0 8px var(--rojo); }
+
+        /* Colores swatches */
+        .swatch.white { background-color: #ffffff; }
+        .swatch.pink { background-color: #ff69b4; }
+        .swatch.black { background-color: #000000; }
+        .swatch.acid { background-color: #3e3e3e; }
+        .swatch.grey { background-color: #888888; }
+        .swatch.red { background-color: #cc0000; }
 
         h3 { 
             font-family: var(--font-display); font-size: 1.1rem; margin: 15px 0 10px; color: #fff; letter-spacing: 1px;
+            transition: opacity 0.3s ease;
         }
 
         .precio { color: var(--rojo); font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255,0,0,0.2); }
@@ -296,7 +319,6 @@
 
         .copyright { color: #444; font-size: 0.75rem; }
 
-        /* CRÉDITOS SEPARADOS */
         .credits {
             font-family: var(--font-body);
             font-size: 0.75rem;
@@ -347,72 +369,101 @@
 
     <div class="grid-productos">
         
-        <div class="tarjeta">
+        <!-- PRODUCTO 1 -->
+        <div class="tarjeta" data-product-name="Bonsai White Pink">
             <div class="etiqueta bg-nuevo">NEW DROP</div>
             <div class="img-container">
                 <img src="img/foto1.jpg" alt="BONSAIWHITEPINK" class="img-prenda">
             </div>
             <h3>BONSAIWHITE PINK</h3>
             <p class="precio">S/ 55.00</p>
-            <a href="https://wa.me/51992287568?text=Quiero%20el%20Bonsai%20WHITEPINK" target="_blank" class="btn-ws">
+            <div class="color-selector">
+                <div class="swatch white active" data-img="img/foto1.jpg" data-color="Blanco" data-name="BONSAIWHITE PINK"></div>
+                <div class="swatch black active" data-img="img/foto2.jpg" data-color="Negro" data-name="BONSAIBLACK PINK"></div>
+            </div>
+            <a href="https://wa.me/51992287568?text=Quiero%20el%20Bonsai%20White%20Pink%20en%20color%20Blanco" target="_blank" class="btn-ws">
                 COMPRAR
             </a>
         </div>
 
-        <div class="tarjeta">
+        <!-- PRODUCTO 2 -->
+        <div class="tarjeta" data-product-name="Bonsai Black Pink">
             <div class="etiqueta bg-oferta">ESSENTIAL</div>
             <div class="img-container">
-                <img src="img/foto2.jpg" alt="BONSAIBLACKPINK" class="img-prenda">
+                <img src="img/foto3.jpg" alt="SKULLPANTHER" class="img-prenda">
             </div>
-            <h3>BONSAIBLACK PINK</h3>
+            <h3>SKULLPANTHER WHITE</h3>
             <p class="precio">S/ 55.00</p>
-            <a href="https://wa.me/51992287568?text=Quiero%20el%20Bonsai%20BlackPINK" target="_blank" class="btn-ws">
+            <div class="color-selector">
+                <div class="swatch white active" data-img="img/foto3.jpg" data-color="Blanco" data-name="SKULLPANTHER WHITE"></div>
+                <div class="swatch black" data-img="img/foto4.jpg" data-color="Negro" data-name="SKULLPANTHER BLACK"></div>
+            </div>
+            <a href="https://wa.me/51992287568?text=Quiero%20el%20Skullpanther%20White%20en%20color%20Blanco" target="_blank" class="btn-ws">
                 COMPRAR
             </a>
         </div>
 
-        <div class="tarjeta">
+        <!-- PRODUCTO 3 -->
+        <div class="tarjeta" data-product-name="Vintage Wash Tee">
             <div class="etiqueta bg-limited">LIMITED</div>
             <div class="img-container">
                 <img src="img/foto3.jpg" alt="Vintage Tee" class="img-prenda">
             </div>
             <h3>VINTAGE WASH TEE</h3>
             <p class="precio">S/ 55.00</p>
-            <a href="https://wa.me/51992287568?text=Info%20sobre%20Vintage%20Wash" target="_blank" class="btn-ws">
+            <div class="color-selector">
+                <div class="swatch acid active" data-img="img/foto3.jpg" data-color="Acid Wash" data-name="VINTAGE ACID WASH"></div>
+                <div class="swatch black" data-img="img/foto4.jpg" data-color="Pure Black" data-name="VINTAGE PURE BLACK"></div>
+            </div>
+            <a href="https://wa.me/51992287568?text=Quiero%20el%20Vintage%20Wash%20Tee%20en%20color%20Acid%20Wash" target="_blank" class="btn-ws">
                 COMPRAR
             </a>
         </div>
 
-        <div class="tarjeta">
+        <!-- PRODUCTO 4 -->
+        <div class="tarjeta" data-product-name="Graphic Hoodie V1">
             <div class="etiqueta bg-nuevo">RESTOCK</div>
             <div class="img-container">
                 <img src="img/foto4.jpg" alt="Graphic Hoodie" class="img-prenda">
             </div>
             <h3>GRAPHIC HOODIE V1</h3>
             <p class="precio">S/ 85.00</p>
-            <a href="https://wa.me/51992287568?text=Quiero%20el%20Graphic%20Hoodie" target="_blank" class="btn-ws">
+            <div class="color-selector">
+                <div class="swatch black active" data-img="img/foto4.jpg" data-color="Negro" data-name="GRAPHIC HOODIE BLACK"></div>
+                <div class="swatch grey" data-img="img/foto3.jpg" data-color="Gris" data-name="GRAPHIC HOODIE GREY"></div>
+            </div>
+            <a href="https://wa.me/51992287568?text=Quiero%20el%20Graphic%20Hoodie%20V1%20en%20color%20Negro" target="_blank" class="btn-ws">
                 COMPRAR
             </a>
         </div>
 
-        <div class="tarjeta">
+        <!-- PRODUCTO 5 -->
+        <div class="tarjeta" data-product-name="Tactical Cargo">
             <div class="etiqueta bg-soldout">SOLD OUT</div>
             <div class="img-container">
                 <img src="img/foto5.jpg" alt="Cargo Pants" class="img-prenda" style="filter: grayscale(100%); opacity: 0.5;">
             </div>
             <h3 style="color: #666;">TACTICAL CARGO</h3>
             <p class="precio" style="color: #666;">S/ 90.00</p>
+            <div class="color-selector">
+                <div class="swatch black active" data-img="img/foto5.jpg" data-color="Negro" data-name="TACTICAL CARGO"></div>
+            </div>
             <span class="btn-disabled">AGOTADO</span>
         </div>
 
-        <div class="tarjeta">
+        <!-- PRODUCTO 6 -->
+        <div class="tarjeta" data-product-name="BP Signature Cap">
             <div class="etiqueta bg-oferta">ACCESORIOS</div>
             <div class="img-container">
                 <img src="img/foto6.jpg" alt="Cap Black" class="img-prenda">
             </div>
             <h3>BP SIGNATURE CAP</h3>
             <p class="precio">S/ 40.00</p>
-            <a href="https://wa.me/51992287568?text=Quiero%20la%20Gorra" target="_blank" class="btn-ws">
+            <div class="color-selector">
+                <div class="swatch black active" data-img="img/foto6.jpg" data-color="Negro" data-name="BP SIGNATURE BLACK"></div>
+                <div class="swatch white" data-img="img/foto1.jpg" data-color="Blanco" data-name="BP SIGNATURE WHITE"></div>
+            </div>
+            <a href="https://wa.me/51992287568?text=Quiero%20la%20BP%20Signature%20Cap%20en%20color%20Negro" target="_blank" class="btn-ws">
                 COMPRAR
             </a>
         </div>
@@ -432,13 +483,11 @@
             <div class="footer-col">
                 <h4>BLOOD PANTHER</h4>
                 <p>Streetwear culture redefinida desde Lima, Perú. Calidad premium, esencia underground.</p>
-                
                 <div class="newsletter-box">
                     <input type="email" placeholder="Suscríbete para drops...">
                     <button>→</button>
                 </div>
             </div>
-
             <div class="footer-col">
                 <h4>EXPLORA</h4>
                 <ul class="footer-links">
@@ -447,7 +496,6 @@
                     <li><a href="/terminos">Términos y Condiciones</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>SOCIAL</h4>
                 <ul class="footer-links">
@@ -461,19 +509,54 @@
             <div class="copyright">
                 &copy; 2024 BLOOD PANTHER STORE. All rights reserved.
             </div>
-
             <div class="credits">
                 Directed by 
                 <a href="https://www.instagram.com/jordanhustle.ar" target="_blank">Jordan Hustle</a> 
-                <span class="separator">&</span> 
+                <span class="separator">&amp;</span> 
                 <a href="https://www.instagram.com/lu3_fv" target="_blank">Luef</a>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Lógica de carrusel de colores con cambio de nombre dinámico
+        document.querySelectorAll('.swatch').forEach(swatch => {
+            swatch.addEventListener('click', function() {
+                const card = this.closest('.tarjeta');
+                const mainImg = card.querySelector('.img-prenda');
+                const title = card.querySelector('h3');
+                const buyBtn = card.querySelector('.btn-ws');
+                
+                const productName = card.getAttribute('data-product-name');
+                const variantName = this.getAttribute('data-name');
+                const colorLabel = this.getAttribute('data-color');
+                const newImgPath = this.getAttribute('data-img');
+
+                // 1. Efecto visual suave de cambio (Imagen y Título)
+                mainImg.style.opacity = '0';
+                title.style.opacity = '0';
+                
+                setTimeout(() => {
+                    mainImg.src = newImgPath;
+                    title.innerText = variantName;
+                    
+                    mainImg.style.opacity = '1';
+                    title.style.opacity = '1';
+                }, 200);
+
+                // 2. Actualizar el swatch activo
+                card.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+
+                // 3. Actualizar el link de WhatsApp si existe botón de compra
+                if (buyBtn) {
+                    const phone = "51992287568";
+                    const message = encodeURIComponent(`Hola Blood Panther, quiero el ${productName} en color ${colorLabel}`);
+                    buyBtn.href = `https://wa.me/${phone}?text=${message}`;
+                }
+            });
+        });
+    </script>
+
 </body>
-
 </html>
-
-
-
